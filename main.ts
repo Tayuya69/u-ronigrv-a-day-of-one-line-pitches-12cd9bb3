@@ -38,3 +38,15 @@ function main(): void {
 }
 
 main();
+
+import { readFileSync as __ronigrvReadFileSync } from "node:fs";
+import { join as __ronigrvJoinPath } from "node:path";
+
+{
+  const __ronigrvOutDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+  const __ronigrvEntry = __ronigrvReadFileSync(__ronigrvJoinPath(__ronigrvOutDir, "entry.txt"), "utf8");
+  const __ronigrvCodePoints = [...__ronigrvEntry].length;
+  if (__ronigrvCodePoints < 1 || __ronigrvCodePoints > 240) {
+    throw new Error(`entry.txt must hold 1-240 Unicode code points, got ${__ronigrvCodePoints}`);
+  }
+}
